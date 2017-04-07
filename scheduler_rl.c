@@ -144,9 +144,9 @@ void schedule(int channel)
 	  if (!command_issued_current_cycle[channel]) {
 		LL_FOREACH(read_queue_head[channel],temp_rd_ptr) {
 				if(temp_rd_ptr->command_issuable)  {
-					if(0)  { // should not hit this
+					if(min_instruction_id==129)  { // should not hit this
 						issue_request_command(temp_rd_ptr);
-
+						std::cout<<"Dispatching instruction with min id "<< temp_rd_ptr->instruction_id;
 						break;
 					} else if (temp_rd_ptr->instruction_id==min_instruction_id)  {
 						issue_request_command(temp_rd_ptr);
